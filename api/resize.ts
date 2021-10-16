@@ -28,11 +28,13 @@ const maxOutputPixelSize = 7_000
 
 const imageAllowedOrigin = 'https://data.cesko.digital'
 
-class ValidationError extends Error {
+export class ValidationError extends Error {
   public readonly statusCode: number
 
   constructor(message: string, statusCode: number) {
     super(message)
+
+    Object.setPrototypeOf(this, ValidationError.prototype)
 
     this.statusCode = statusCode
   }
