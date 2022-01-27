@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-css-tags */
 import Head from "next/head";
 import strings from "content/strings.json";
+import { env } from "lib/env";
 
 export interface CustomHeadProps {
   description?: string;
@@ -29,6 +30,7 @@ export const CustomHead: React.FC<CustomHeadProps> = ({
       <meta property="og:image" content={coverUrl} />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:image" content={coverUrl} />
+      {!env.allowRobots && <meta name="robots" content="noindex, nofollow" />}
       <link rel="stylesheet" href="/fonts.css" />
       <link rel="stylesheet" href="/global.css" />
       <link rel="shortcut icon" type="image/png" href="/favicon.png" />
